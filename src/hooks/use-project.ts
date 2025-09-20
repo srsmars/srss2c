@@ -1,11 +1,12 @@
 'use client'
 
-import { createProjectStart } from '@/redux/slice/projects'
+import { createProjectStart } from '@/redux/slices/projects'
 import { useAppDispatch, useAppSelector } from '@/redux/store'
 import { toast } from 'sonner'
 import { api } from '../../convex/_generated/api'
 import { fetchMutation } from 'convex/nextjs'
 import { addProject, createProjectFailure, createProjectSuccess } from '@/redux/slices/projects'
+import { slices } from './../redux/slices/index';
 
 const generateGradientThumbnail = () => {
   const gradients = [

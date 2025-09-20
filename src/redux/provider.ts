@@ -1,7 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { slices } from './slices'
 import middleware from '@/middleware'
-
+import { apis } from './api'
+import ReduxProvider from '@/redux/provider'
 // RootState type
 
 // RootState type

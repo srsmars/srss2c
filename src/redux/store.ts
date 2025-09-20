@@ -1,12 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux'
 import { slices } from './slices'
-import middleware from '@/middleware'
 import { apis } from './api'
- 
-// RootState type
-
-// RootState type
-export type RootState = ReturnType<typeof rootReducer>
 
 // Build rootReducer by combining slices and API reducers
 const rootReducer = combineReducers({
@@ -16,6 +11,9 @@ const rootReducer = combineReducers({
     return acc
   }, {} as Record<string, typeof apis[number]['reducer']>),
 })
+
+// RootState type
+export type RootState = ReturnType<typeof rootReducer>
 
 // Factory store function
 export function makeStore(preloadedState?: Partial<RootState>) {
@@ -33,7 +31,6 @@ export const store = makeStore()
 export type AppStore = ReturnType<typeof makeStore>
 export type AppDispatch = AppStore['dispatch']
 
+// Typed hooks
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 export const useAppDispatch = () => useDispatch<AppDispatch>()
-
-
